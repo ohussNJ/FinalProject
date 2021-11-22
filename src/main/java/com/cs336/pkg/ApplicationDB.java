@@ -22,8 +22,7 @@ public class ApplicationDB {
 
 	public Connection getConnection(){
 		
-		//Create a connection string
-		//String connectionUrl = "jdbc:mysql://rakshaadb.ccd5ejynxyym.us-east-1.rds.amazonaws.com:3306/rakshaadb";
+		
 		String connectionUrl = "jdbc:mysql://localhost:3306/airlinedb";
 		Connection connection = null;
 		
@@ -41,8 +40,7 @@ public class ApplicationDB {
 			e.printStackTrace();
 		}
 		try {
-			//Create a connection to your DB
-			//connection = DriverManager.getConnection(connectionUrl,"rravi", "sairam23");
+			
 			connection = DriverManager.getConnection(connectionUrl,"root", "password");
 			//System.out.println("Inside connection");
 		} catch (SQLException e) {
@@ -90,30 +88,7 @@ public class ApplicationDB {
 		
 	}
 	
-	/*public int getCid(String username) throws SQLException {
-		Connection conn = null;
-		Statement stmt = null;
-		int cid = 0; 
-		try {
-			conn = this.getConnection();
-			stmt = conn.createStatement();
-	        String sql = "select cid from users where username = '" + username + "';";
-	        System.out.println(sql);
-			ResultSet rs = stmt.executeQuery(sql);
-	        rs.next();
-	        cid = rs.getInt("cid");
-	        return cid; 
-			
-		} finally {
-			if(stmt != null) {
-				stmt.close();
-			}
-			if (conn != null) {
-				this.closeConnection(conn);
-			}
-		}	
-		
-	}*/
+
 	
 	public Map<Integer, Float> getFlights(String airportorigin, String airportdest, String startdate, String isFlexible) throws SQLException, ParseException{
 		Connection conn = null;

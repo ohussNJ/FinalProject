@@ -37,10 +37,6 @@ if (classname.equals("Business")){
 }
 
 
-
-//String userid = (String)session.getAttribute("userid");
-//int cid = appdb.getCid(userid); 
-
 int isWaitlisted = 0; 
 int isWaitlistedReturn = 0; 
 isWaitlisted = appdb.saveTicket(cid, flightNum, isOneWay,classname, isFlex, cancelFee, price);

@@ -9,6 +9,9 @@ You are not logged in<br/>
 Welcome <%=session.getAttribute("user")%><br/>
 <a href='logout.jsp'>Log out</a><br/>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/>
+<a href='makeFlightRes.jsp'>Make Reservation</a><br/>
+<br>
+
 View Past Or Upcoming Reservations?
 <br>
 	<form method="post" action="resUpcomingOrPast.jsp">
@@ -82,7 +85,8 @@ Cancel flight reservations? Enter your ticket number:<br/>
 	</form>
 <br>
 
-Your flight is full? Enter the waiting list!
+Waiting List
+<br>
 Enter the flight number and your id: 
 <br>
 	<form method="post" action="enterWaitingList.jsp">
