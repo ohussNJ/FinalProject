@@ -27,24 +27,18 @@ public class ApplicationDB {
 		Connection connection = null;
 		
 		try {
-			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			
 			connection = DriverManager.getConnection(connectionUrl,"root", "password");
-			//System.out.println("Inside connection");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -56,7 +50,6 @@ public class ApplicationDB {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -194,7 +187,7 @@ public class ApplicationDB {
 			stmt = conn.createStatement();
 	        String sql = "Update ticket set classtype='" + classType + "', is_cancelled=" + isCancel + ", isflexible=" + isFlex + ", cancelfee=" + cancelFee + " where ticketNum=" + ticketNum +";";
 	        System.out.println(sql);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        conn.commit(); 
 			
@@ -217,7 +210,7 @@ public class ApplicationDB {
 			stmt = conn.createStatement();
 	        String sql = "Update flight set departuredate= date_format('"+depdate+"', '%Y-%m-%d'), destinationdate= date_format('"+destdate+"', '%Y-%m-%d'), departureairport='"+depAirport+"', destinationairport='"+destAirport+"', isinternational="+isinternational+", isdomestic="+isdomestic+" where flightNum=" + flightnum +";";
 	        System.out.println(sql);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        conn.commit(); 
 			
@@ -240,7 +233,7 @@ public class ApplicationDB {
 			stmt = conn.createStatement();
 	        String sql = "Update airport set airportname= '"+airportname+"' where airportid= '" + airportid +"';";
 	        System.out.println(sql);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        conn.commit(); 
 			
@@ -263,7 +256,7 @@ public class ApplicationDB {
 			stmt = conn.createStatement();
 	        String sql = "Update airlinecompany set name= '"+airlinename+"' where airlineid= '" + airlineid +"';";
 	        System.out.println(sql);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        conn.commit(); 
 			
@@ -326,7 +319,7 @@ public class ApplicationDB {
 			String date = simpleDateFormat.format(new Date());
 	        String sql = "Insert into ticket(cid, flightNum, is_oneway, classtype, isflexible, cancelfee, fare, datebought, waitlist, seatnum) values(" + cid + "," + flightNum + "," + isOneWay + ",'" + classname+ "'," + isFlex + "," + cancelFee + "," + price + ",'" + date +  "' ," + isWaitlisted + "," + seatNum + ");";
 	        System.out.println(sql);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        conn.commit(); 
 			
@@ -355,7 +348,7 @@ public class ApplicationDB {
 	        System.out.println(sql);
 	        String idquery = "SELECT LAST_INSERT_ID() AS flightNum;";
 	        System.out.println(idquery);
-	        conn.setAutoCommit(false); //transaction for multiple updates
+	        conn.setAutoCommit(false); 
 	        stmt.executeUpdate(sql);
 	        ResultSet result = stmt.executeQuery(idquery);
 	        result.next();
@@ -363,7 +356,6 @@ public class ApplicationDB {
 	        int flightNum = Integer.parseInt(result.getString("flightNum"));
 	        conn.commit();
 	        return flightNum;
-	        
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -372,13 +364,11 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public static void main(String[] args) {
 		ApplicationDB dao = new ApplicationDB();
 		Connection connection = dao.getConnection();
-		
 		System.out.println(connection);		
 		dao.closeConnection(connection);
 	}
