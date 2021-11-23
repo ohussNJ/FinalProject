@@ -20,12 +20,9 @@ public class ApplicationDB {
 		
 	}
 
-	public Connection getConnection(){
-		
-		
+	public Connection getConnection(){	
 		String connectionUrl = "jdbc:mysql://localhost:3306/airlinedb";
 		Connection connection = null;
-		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -36,14 +33,11 @@ public class ApplicationDB {
 			e.printStackTrace();
 		}
 		try {
-			
 			connection = DriverManager.getConnection(connectionUrl,"root", "password");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return connection;
-		
 	}
 	
 	public void closeConnection(Connection connection){
@@ -62,14 +56,13 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        ResultSet rs = stmt.executeQuery("select airportid, airportname from airport");
-	        System.out.println("Get airports after query");
-	        while (rs.next()) {
-	        	airports.put(rs.getString("airportid"), rs.getString("airportname"));
-	        	System.out.println(rs.getString("airportid"));
+	        	ResultSet rs = stmt.executeQuery("select airportid, airportname from airport");
+	        	System.out.println("Get airports after query");
+	        	while (rs.next()) {
+	        		airports.put(rs.getString("airportid"), rs.getString("airportname"));
+	        		System.out.println(rs.getString("airportid"));
 	        }
 	        return airports; 
-			
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -78,10 +71,7 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
-	
-
 	
 	public Map<Integer, Float> getFlights(String airportorigin, String airportdest, String startdate, String isFlexible) throws SQLException, ParseException{
 		Connection conn = null;
@@ -105,15 +95,12 @@ public class ApplicationDB {
 						+ airportorigin +  "' and destinationairport ='" + airportdest + 
 						"' and departuredate = '" + startdate + "';";
 			}
-	        
-	        System.out.println(sql);
+	        	System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 	        while (rs.next()) {
 	        	flightnums.put(new Integer(rs.getInt("flightnum")), rs.getFloat("price"));
-	 
 	        }
 	        return flightnums; 
-			
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -122,7 +109,6 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public Map<String, String> getAirlines() throws SQLException{
@@ -133,15 +119,13 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "select airlineid, name from airlinecompany;";
-	        System.out.println(sql);
+	        	String sql = "select airlineid, name from airlinecompany;";
+	        	System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 	        while (rs.next()) {
 	        	airlineids.put(rs.getString("airlineid"), rs.getString("name"));
-	 
 	        }
 	        return airlineids; 
-			
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -160,15 +144,13 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "select aircraftid, airlineid from aircraft where airlineid='" + airlineid +"'";
-	        System.out.println(sql);
+	       		String sql = "select aircraftid, airlineid from aircraft where airlineid='" + airlineid +"'";
+	        	System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 	        while (rs.next()) {
 	        	aircrafts.put(rs.getString("aircraftid"), rs.getString("airlineid"));
-	 
 	        }
 	        return aircrafts; 
-			
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -185,12 +167,11 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "Update ticket set classtype='" + classType + "', is_cancelled=" + isCancel + ", isflexible=" + isFlex + ", cancelfee=" + cancelFee + " where ticketNum=" + ticketNum +";";
-	        System.out.println(sql);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        conn.commit(); 
-			
+	        	String sql = "Update ticket set classtype='" + classType + "', is_cancelled=" + isCancel + ", isflexible=" + isFlex + ", cancelfee=" + cancelFee + " where ticketNum=" + ticketNum +";";
+	        	System.out.println(sql);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	conn.commit(); 
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -199,7 +180,6 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public void updateFlight(int flightnum, String depdate, String destdate, String depAirport, String destAirport, int isinternational, int isdomestic) throws SQLException {
@@ -208,12 +188,11 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "Update flight set departuredate= date_format('"+depdate+"', '%Y-%m-%d'), destinationdate= date_format('"+destdate+"', '%Y-%m-%d'), departureairport='"+depAirport+"', destinationairport='"+destAirport+"', isinternational="+isinternational+", isdomestic="+isdomestic+" where flightNum=" + flightnum +";";
-	        System.out.println(sql);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        conn.commit(); 
-			
+	        	String sql = "Update flight set departuredate= date_format('"+depdate+"', '%Y-%m-%d'), destinationdate= date_format('"+destdate+"', '%Y-%m-%d'), departureairport='"+depAirport+"', destinationairport='"+destAirport+"', isinternational="+isinternational+", isdomestic="+isdomestic+" where flightNum=" + flightnum +";";
+	        	System.out.println(sql);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	conn.commit(); 
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -222,7 +201,6 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public void updateAirport(String airportid, String airportname) throws SQLException {
@@ -231,12 +209,11 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "Update airport set airportname= '"+airportname+"' where airportid= '" + airportid +"';";
-	        System.out.println(sql);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        conn.commit(); 
-			
+	        	String sql = "Update airport set airportname= '"+airportname+"' where airportid= '" + airportid +"';";
+	        	System.out.println(sql);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	conn.commit(); 
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -245,7 +222,6 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public void updateAirline(String airlineid, String airlinename) throws SQLException {
@@ -254,12 +230,11 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "Update airlinecompany set name= '"+airlinename+"' where airlineid= '" + airlineid +"';";
-	        System.out.println(sql);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        conn.commit(); 
-			
+	        	String sql = "Update airlinecompany set name= '"+airlinename+"' where airlineid= '" + airlineid +"';";
+	        	System.out.println(sql);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	conn.commit(); 
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -268,7 +243,6 @@ public class ApplicationDB {
 				this.closeConnection(conn);
 			}
 		}
-		
 	}
 	
 	public float getFlightPrice(int flightNum) throws SQLException {
@@ -278,11 +252,10 @@ public class ApplicationDB {
 		try {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
-	        String sql = "select price from flight where flightNum =" + flightNum + ";"; 
-	        ResultSet rs = stmt.executeQuery(sql); 
-	        rs.next();
-	        price = rs.getFloat("price");
-			
+	        	String sql = "select price from flight where flightNum =" + flightNum + ";"; 
+	        	ResultSet rs = stmt.executeQuery(sql); 
+	        	rs.next();
+	        	price = rs.getFloat("price");
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -304,25 +277,24 @@ public class ApplicationDB {
 			stmt = conn.createStatement();
 			String checkSeatsSql = "select count(*) as numseats from ticket where flightNum =" + flightNum + ";";
 			ResultSet rs = stmt.executeQuery(checkSeatsSql); 
-	        rs.next();
-	        int seatsBooked = rs.getInt("numseats");
-	        int seatNum = 0; 
-	        if (seatsBooked >= 5) {
-	        	isWaitlisted = 1;
-	        }
-	        else {
-	        	seatNum = seatsBooked+1; 
-	        }
+	        	rs.next();
+	        	int seatsBooked = rs.getInt("numseats");
+	        	int seatNum = 0; 
+	        	if (seatsBooked >= 5) {
+	        		isWaitlisted = 1;
+	        	}
+	        	else {
+	        		seatNum = seatsBooked+1; 
+	        	}
 			LocalDate localdate = LocalDate.now(); 
 			String pattern = "yyyy-MM-dd";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 			String date = simpleDateFormat.format(new Date());
-	        String sql = "Insert into ticket(cid, flightNum, is_oneway, classtype, isflexible, cancelfee, fare, datebought, waitlist, seatnum) values(" + cid + "," + flightNum + "," + isOneWay + ",'" + classname+ "'," + isFlex + "," + cancelFee + "," + price + ",'" + date +  "' ," + isWaitlisted + "," + seatNum + ");";
-	        System.out.println(sql);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        conn.commit(); 
-			
+	        	String sql = "Insert into ticket(cid, flightNum, is_oneway, classtype, isflexible, cancelfee, fare, datebought, waitlist, seatnum) values(" + cid + "," + flightNum + "," + isOneWay + ",'" + classname+ "'," + isFlex + "," + cancelFee + "," + price + ",'" + date +  "' ," + isWaitlisted + "," + seatNum + ");";
+	        	System.out.println(sql);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	conn.commit(); 
 		} finally {
 			if(stmt != null) {
 				stmt.close();
@@ -332,9 +304,7 @@ public class ApplicationDB {
 			}
 		}
 		return isWaitlisted; 
-		
 	}
-	
 	
 	public int saveFlight(String depdate, String destdate, String depAirport, String destAirport, int isinternational, int isdomestic, int price, int stops, String aircraftid, String airlineid) throws SQLException {
 		Connection conn = null;
@@ -344,18 +314,18 @@ public class ApplicationDB {
 			conn = this.getConnection();
 			stmt = conn.createStatement();
 			System.out.println("before insert");
-	        String sql = "Insert into flight(departuredate, destinationdate, departureairport, destinationairport, isinternational, isdomestic, price, stops, aircraftid, airlineid) values(date_format('"+depdate+"', '%Y-%m-%d'), date_format('"+destdate+"', '%Y-%m-%d'), '"+depAirport+"', '"+destAirport+"', "+isinternational+", "+isdomestic+", "+price+", "+stops+", '"+aircraftid+"', '"+airlineid+"');";
-	        System.out.println(sql);
-	        String idquery = "SELECT LAST_INSERT_ID() AS flightNum;";
-	        System.out.println(idquery);
-	        conn.setAutoCommit(false); 
-	        stmt.executeUpdate(sql);
-	        ResultSet result = stmt.executeQuery(idquery);
-	        result.next();
-	        System.out.println(result.getString("flightNum"));
-	        int flightNum = Integer.parseInt(result.getString("flightNum"));
-	        conn.commit();
-	        return flightNum;
+	        	String sql = "Insert into flight(departuredate, destinationdate, departureairport, destinationairport, isinternational, isdomestic, price, stops, aircraftid, airlineid) values(date_format('"+depdate+"', '%Y-%m-%d'), date_format('"+destdate+"', '%Y-%m-%d'), '"+depAirport+"', '"+destAirport+"', "+isinternational+", "+isdomestic+", "+price+", "+stops+", '"+aircraftid+"', '"+airlineid+"');";
+	        	System.out.println(sql);
+	        	String idquery = "SELECT LAST_INSERT_ID() AS flightNum;";
+	        	System.out.println(idquery);
+	        	conn.setAutoCommit(false); 
+	        	stmt.executeUpdate(sql);
+	        	ResultSet result = stmt.executeQuery(idquery);
+	        	result.next();
+	        	System.out.println(result.getString("flightNum"));
+	        	int flightNum = Integer.parseInt(result.getString("flightNum"));
+	        	conn.commit();
+	        	return flightNum;
 		} finally {
 			if(stmt != null) {
 				stmt.close();
