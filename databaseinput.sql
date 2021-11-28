@@ -32,5 +32,5 @@ VALUES (3, "2022-06-24", "2022-06-24", "LAX" , "EWR", 0, 1, 600, 1, "united2", "
 INSERT INTO flight(flightNum, departuredate, destinationdate, departureairport, destinationairport, isinternational, isdomestic, price, stops, aircraftid, airlineid) 
 VALUES (4, "2022-07-24", "2022-07-24", "LCY", "JFK", 1, 0, 300, 2, "spirit4", "LO");
 
-INSERT INTO ticket(cid, flightNum, ticketNum, isflexible, bookingcost, cancelfee, seatnum, fare, datebought, priorityNum, is_oneway, waitlist, is_roundtrip, classtype)
-VALUES (1, 1, 1, 1, 30, 25, 45, 300, "2022-07-24", 1, 0, 0, 1, "business");
+INSERT INTO ticket(cid, flightNum, ticketNum, isflexible, bookingcost, cancelfee, seatnum, fare, datebought, priorityNum, is_oneway, waitlist, is_roundtrip, classtype, is_cancelled)
+VALUES (1, 1, 1, 1, 30, 25, 45, 300, "2022-07-24", 1, 0, 0, 1, "business", 0);
