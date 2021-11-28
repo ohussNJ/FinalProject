@@ -54,6 +54,8 @@ CREATE TABLE `flight` (
   `isdomestic` boolean,
   `price` float,
   `stops` int,
+  `takeoff_time` time,
+  `landing_time` time,
   `aircraftid` varchar(10),
   `airlineid` varchar(2),
 PRIMARY KEY (`flightNum`),
@@ -83,3 +85,4 @@ PRIMARY KEY (`ticketNum`),
 FOREIGN KEY (`flightNum`) REFERENCES flight (`flightNum`),
 FOREIGN KEY (`cid`) REFERENCES users (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
