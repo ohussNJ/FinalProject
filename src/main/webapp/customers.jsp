@@ -4,7 +4,7 @@
     String lastn = request.getParameter("lastname");  
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airlinedb","root","password");
-    String query = "update users set username=? where lastname=?";
+    String query = "update users set username=? where firstname=?";
 
     // create the mysql insert preparedstatement
     PreparedStatement preparedStmt = con.prepareStatement(query);

@@ -14,8 +14,6 @@
 		List<String> list = new ArrayList<String>();
 
 		try {
-
-			//Get the database connection
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();
 			

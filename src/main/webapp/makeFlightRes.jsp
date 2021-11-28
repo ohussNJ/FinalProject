@@ -30,7 +30,7 @@ for (Map.Entry mapElement : airports.entrySet()) {
 <% } %>
 </select>
 
-<p>Select Origin:</p>
+<p>Starting Location:</p>
 <select name="origin">
  <% 
 	
@@ -39,7 +39,7 @@ for (Map.Entry mapElement : airports.entrySet()) {
   <option value="<%=mapElement.getKey()%>"><%=mapElement.getKey()%> - <%=mapElement.getValue()%></option>
 <% } %>
 </select>
-<p>Select Destination:</p>
+<p>Destination:</p>
 
 <select name="dest">
  <% 
@@ -51,13 +51,12 @@ for (Map.Entry mapElement : airports.entrySet()) {
 </select>
 
 <p>Departure Date: <input name="startDate"></input> </p>
-<p> Only Select Return Date for Round Trip Tickets:</p>
-<p>Return Date:<input name="destDate"></input> </p>
+<p>Return Date (For Round Trip Tickets):<input name="destDate"></input> </p>
 
-<p>If "Flexible Dates" is chosen, flights within three days of your selected departure date will be displayed.</p>
+<p>Flexibility</p>
 <select name="flexible">
-<option value="flexible">Flexible Dates</option>
-<option value="not flexible">No Flexible Dates</option>
+<option value="flexible">Flexible (+-3 days)</option>
+<option value="not flexible">Not Flexible</option>
 </select>
 
 <p>

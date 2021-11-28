@@ -21,7 +21,7 @@
 			//Get the combobox from the index.jsp
 			String ticketnum = request.getParameter("ticketNum");
 			int cid = Integer.parseInt(request.getParameter("cid"));
-			String insert = "INSERT INTO ticket (waitist, cid)" + "VALUES(?,?)" ;
+			String insert = "INSERT INTO ticket (waitlist, cid)" + "VALUES(?,?)" ;
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself

@@ -66,7 +66,7 @@ else {%>
 	<p>Return Ticket</p>
 	Flight Number: <%=flightNumReturn %>
 	<p>From: <%=destAirport%> To: <%=originAirport%></p>
-	<%=classnameReturn %>
+	<p>Class: <%=classnameReturn %></p>
 	<%if (isWaitlistedReturn == 0){ %>
 	<p>Status: Booked</p> <%--change if waitlist --%> 
 <% }
