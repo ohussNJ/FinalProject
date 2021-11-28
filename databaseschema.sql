@@ -77,6 +77,7 @@ CREATE TABLE `ticket` (
   `is_oneway` boolean,
   `waitlist` boolean,
   `is_roundtrip` boolean,
+  `is_cancelled` boolean,
   `classtype` varchar(10),
 PRIMARY KEY (`ticketNum`),
 FOREIGN KEY (`flightNum`) REFERENCES flight (`flightNum`),
