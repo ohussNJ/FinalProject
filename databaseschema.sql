@@ -2,7 +2,7 @@ CREATE DATABASE `airlinedb`;
 USE `airlinedb`;
 
 CREATE TABLE `admin` (
-	`admin_username` varchar(50),
+    `admin_username` varchar(50),
     `admin_password` varchar(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,3 +86,7 @@ FOREIGN KEY (`flightNum`) REFERENCES flight (`flightNum`),
 FOREIGN KEY (`cid`) REFERENCES users (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE faq(
+    `question` varchar(100),
+    `answer` varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
