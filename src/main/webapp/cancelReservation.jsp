@@ -33,7 +33,7 @@
 			result2.next();
 			String classname = result2.getString("classtype");
 			
-			if (classname.equals("BUSINESS")){
+			if (classname.equals("business") || classname.equals("first")){
 				out.print("Your ticket has been cancelled. No cancellation fee applied.");
 			} else {
 				out.print("Your ticket has been cancelled. Cancellation fee applied.");

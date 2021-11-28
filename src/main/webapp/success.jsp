@@ -29,13 +29,14 @@ Past/Upcoming Reservations
 	</form>
 <br>
 
-Sort By: Price, Take-off Time, Landing Time
+Sort By: Price, Take-off Time, Landing Time, Duration
 <br>
 	<form method="post" action="sort.jsp">
 		<select name="sort" size=1>
 			<option value="price">Price</option>
-			<option value="departuredate">Take-off Time</option>
-			<option value="destinationdate">Landing Time</option>
+			<option value="takeoff_time">Take-off Time</option>
+			<option value="landing_time">Landing Time</option>
+			<option value="duration">Duration</option>
 		</select>&nbsp;<br> <input type="submit" value="submit">
 	</form>
 <br>
@@ -74,7 +75,6 @@ Filter By: Airline
 <br>
 
 Cancel Flight:<br/>
-<br>
 	<form method="post" action="cancelReservation.jsp">
 	<table>
 	<tr>
@@ -94,6 +94,30 @@ Waiting List:
 	</tr>
 	<tr>
 	<td>CID</td><td><input type="text" name="cid"></td>
+	</tr>
+	</table>
+	<input type="submit" value="submit">
+	</form>
+<br>
+
+Search Question:
+<br>
+	<form method="post" action="searchQuestion.jsp">
+	<table>
+	<tr>
+	<td>Keyword(Optional)</td><td><input type="text" name="keyword"></td>
+	</tr>
+	</table>
+	<input type="submit" value="submit">
+	</form>
+<br>
+
+Add Question:
+<br>
+	<form method="post" action="addQuestion.jsp">
+	<table>
+	<tr>
+	<td>Question</td><td><input type="text" name="question"></td>
 	</tr>
 	</table>
 	<input type="submit" value="submit">

@@ -24,7 +24,7 @@ String classnameReturn = request.getParameter("class2");
 if (typeOfTrip.equals("Round Trip")){
 	flightNumReturn = Integer.parseInt(request.getParameter("flightNumReturn"));
 	priceReturn = appdb.getFlightPrice(flightNumReturn);
-	if (classnameReturn.equals("Business")){
+	if (classnameReturn.equals("Economy")){
 		cancelFeeReturn = 100; 
 	}
 }
@@ -32,7 +32,7 @@ String classname = request.getParameter("class");
 
 
 int cancelFee = 0; 
-if (classname.equals("Business")){
+if (classname.equals("Economy")){
 	cancelFee = 100; 
 }
 
@@ -52,7 +52,7 @@ if (typeOfTrip.equals("Round Trip")){
 <p> Your Ticket Details: </p>
 Flight Number: <%=flightNum %>
 <p>From: <%=originAirport%> To: <%=destAirport%></p>
-<%=classname %>
+<p>Class: <%=classname %></p>
 <%if (isWaitlisted == 0){ %>
 	<p>Status: Booked</p> <%--change if waitlist --%> 
 <% }
