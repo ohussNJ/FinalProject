@@ -37,6 +37,10 @@
 				out.print("Your ticket has been cancelled. No cancellation fee applied.");
 			} else {
 				out.print("Your ticket has been cancelled. Cancellation fee applied.");
+				String str3="UPDATE ticket SET cancelfee=25 WHERE ticketNum=?";
+				PreparedStatement preparedStmt2 = con.prepareStatement(str3);
+				preparedStmt2.setInt(1, ticketNum);
+				preparedStmt2.executeUpdate();
 			}
 			
 
