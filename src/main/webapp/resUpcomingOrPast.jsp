@@ -22,7 +22,7 @@
 			int customerid = Integer.parseInt(request.getParameter("cid"));
 			String str=null;
 			if(entity.equals("Past")){
-				str = "SELECT t.ticketNum, (case when t.waitlist = 1 then ('On Waiting List') when t.is_cancelled=1 else ('Confirmed') end) AS tStatus, (case when t.is_oneway = 1 then ('One-way') else ('Round-trip') end) AS resType, f.departuredate, f.destinationdate, f.departureairport, f.destinationairport, f.airlineid, t.seatnum, t.fare FROM ticket t JOIN flight f ON t.flightNum=f.flightNum WHERE f.departuredate < sysdate() and cid=" + customerid;
+				str = "SELECT t.ticketNum, (case when t.waitlist = 1 then ('On Waiting List') when t.is_cancelled=1 then ('Cancelled') else ('Confirmed') end) AS tStatus, (case when t.is_oneway = 1 then ('One-way') else ('Round-trip') end) AS resType, f.departuredate, f.destinationdate, f.departureairport, f.destinationairport, f.airlineid, t.seatnum, t.fare FROM ticket t JOIN flight f ON t.flightNum=f.flightNum WHERE f.departuredate < sysdate() and cid=" + customerid;
 			}
 			else {
 				str = "SELECT t.ticketNum, (case when t.waitlist = 1 then ('On Waiting List') when t.is_cancelled=1 then ('Cancelled') else ('Confirmed') end) AS tStatus, (case when t.is_oneway = 1 then ('One-way') else ('Round-trip') end) AS resType, f.departuredate, f.destinationdate, f.departureairport, f.destinationairport, f.airlineid, t.seatnum, t.fare FROM ticket t JOIN flight f ON t.flightNum=f.flightNum WHERE f.departuredate >= sysdate() and cid=" + customerid;

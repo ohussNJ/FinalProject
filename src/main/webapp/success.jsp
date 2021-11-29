@@ -12,6 +12,19 @@ Welcome <%=session.getAttribute("user")%><br/>
 <a href='makeFlightRes.jsp'>Make Reservation</a><br/>
 <br>
 
+Wait List Alerts:
+<br>
+	<form method="post" action="waitListAlert.jsp">
+		Enter your CID to confirm:
+		<table>
+		<tr>
+		<td><input type="text" name="cid"></td>
+		</tr>
+		</table>
+		<input type="submit" value="Submit">
+	</form>
+<br>
+
 Past/Upcoming Reservations
 <br>
 	<form method="post" action="resUpcomingOrPast.jsp">

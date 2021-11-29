@@ -19,13 +19,14 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get the combobox from the index.jsp
-			String ticketnum = request.getParameter("ticketNum");
+			int flightNum = Integer.valueOf(request.getParameter("flightNum"));
 			int cid = Integer.parseInt(request.getParameter("cid"));
-			String insert = "INSERT INTO ticket (waitlist, cid)" + "VALUES(?,?)" ;
+			String insert = "INSERT INTO ticket (flightnum, waitlist, cid)" + "VALUES(?,1,?)" ;
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-			ps.setBoolean(1, true);
+			ps.setInt(1, flightNum);
+			//ps.setBoolean(2, true);
 			ps.setInt(2, cid);
 			//Run the query against the DB
 			ps.executeUpdate();
