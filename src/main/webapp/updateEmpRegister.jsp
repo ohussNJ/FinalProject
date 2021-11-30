@@ -27,4 +27,5 @@
     out.println("welcome " + userid);
     out.println("<a href='logout.jsp'>Log out</a>");
     response.sendRedirect("successemp.jsp");
+    
 %>
