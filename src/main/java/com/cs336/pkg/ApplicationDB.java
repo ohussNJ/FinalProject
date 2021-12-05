@@ -280,7 +280,7 @@ public class ApplicationDB {
 	        	rs.next();
 	        	int seatsBooked = rs.getInt("numseats");
 	        	int seatNum = 0; 
-	        	if (seatsBooked >= 5) {
+	        	if (seatsBooked >= 1) {
 	        		isWaitlisted = 1;
 	        	}
 	        	else {
