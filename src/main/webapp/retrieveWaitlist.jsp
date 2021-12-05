@@ -12,16 +12,21 @@
 <body>
 	<%
 		try {
-
+			//out.print("Check 1");
 			//Get the database connection
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();
 			
+			//out.print("Check 2");
+			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
+			//out.print("Check 2.5");
 			int entity = Integer.parseInt(request.getParameter("flightNum"));
 			
-			String str = "select t.cid, u.lastname, u.firstname from ticket t join users u on t.cid=u.cid where t.flightNum=" + entity + " and t.waitlist=1;";
+			//out.print("Check 3: "+entity);
+			
+			String str = "select t.cid, u.lastname, u.firstname from ticket t join users u on t.cid=u.cid where t.flightNum=" + entity + " and t.waitlist=1";
 			
 			//Run the query against the database.
 			ResultSet result = stmt.executeQuery(str);
