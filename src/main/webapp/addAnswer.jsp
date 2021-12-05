@@ -14,6 +14,7 @@ Your answer was added to the question.
 //ApplicationDB db = new ApplicationDB();	
 //Connection con = db.getConnection();
 String originalQuestion = request.getParameter("Question");
+//System.out.println("Question: "+originalQuestion);
 String ans=request.getParameter("Answer");
 Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airlinedb","root","password");
@@ -22,11 +23,13 @@ Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airlin
 //int x= st.executeUpdate("DELETE FROM faq WHERE question="+originalQuestion);
 //String del="DELETE FROM faq WHERE question="+originalQuestion;
 
-//String query = "UPDATE faq SET (answer) VALUES (?) WHERE question='"+originalQuestion+"'";
-String query = "INSERT INTO faq (answer) VALUES (?) WHERE question="+originalQuestion;
+//String query = "UPDATE faq SET (answer) VALUES (?) WHERE question="+originalQuestion;
+String query = "UPDATE faq SET question=?,answer=? WHERE question='"+originalQuestion+"'";
+//String query = "INSERT INTO faq (answer) VALUES (?) WHERE question="+originalQuestion;
 PreparedStatement preparedStmt = con.prepareStatement(query);
-preparedStmt.setString(1, ans);
-preparedStmt.setString(2, originalQuestion);
+preparedStmt.setString(1, originalQuestion);
+preparedStmt.setString(2, ans);
+//preparedStmt.setString(2, originalQuestion);
 preparedStmt.executeUpdate();
 %>
 
