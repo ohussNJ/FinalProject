@@ -73,6 +73,33 @@ public class ApplicationDB {
 		}
 	}
 	
+	public Map<String, String> getQuestions() throws SQLException
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		Map<String, String> questions = new HashMap<String, String>(); 
+		System.out.println("Get questions");
+		try {
+			conn = this.getConnection();
+			stmt = conn.createStatement();
+	        	ResultSet rs = stmt.executeQuery("select question, answer from faq where answer IS NULL");
+	        	System.out.println("Get questions after query");
+	        	while (rs.next()) {
+	        		questions.put(rs.getString("question"), rs.getString("answer"));
+	        		System.out.println(rs.getString("question"));
+	        }
+	        return questions; 
+		} finally {
+			if(stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				this.closeConnection(conn);
+			}
+		}	
+		
+	}
+	
 	public Map<Integer, Float> getFlights(String airportorigin, String airportdest, String startdate, String isFlexible) throws SQLException, ParseException{
 		Connection conn = null;
 		Statement stmt = null;
