@@ -35,13 +35,22 @@ Edit Flight reservations for a customer: Cancel flight or change seat type
 <br>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/>
 
+Add, Edit, Delete information for aircrafts, airports, and flights 
+<br>
+<a href='add_edit_delete_airport.jsp'>Add, Edit, Delete information for Airports</a><br/>
+<a href='add_edit_delete_aircraft.jsp'>Add, Edit, Delete information for Aircrafts</a><br/>
+<a href='add_edit_delete_flights.jsp'>Add, Edit, Delete information for Flights</a><br/>
+
+<br>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/>
+
 Retrieve Waiting List for Flight
 <br>
 	<form method="post" action="retrieveWaitlist.jsp">
 		Enter the Flight number:
 		<table>
 		<tr>
-		<td><input type="text" name="Flight number:"></td>
+		<td><input type="text" name="flightNum"></td>
 		</tr>
 		</table>
 		<input type="submit" value="Submit">
