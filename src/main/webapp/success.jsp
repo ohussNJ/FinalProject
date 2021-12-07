@@ -1,3 +1,4 @@
+<%@ page import ="java.sql.*" %>
 <%
     if ((session.getAttribute("user") == null)) {
 %>
@@ -7,6 +8,18 @@ You are not logged in<br/>
 %>
 
 Welcome <%=session.getAttribute("user")%><br/>
+CID: <%
+String userid = session.getAttribute("user").toString();   
+//String pwd = request.getParameter("password");
+Class.forName("com.mysql.jdbc.Driver");
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airlinedb","root","password");
+Statement st = con.createStatement();
+//ResultSet rs= st.executeQuery("select cid from users where username='" + userid + "' and password='" + pwd + "'");
+ResultSet rs= st.executeQuery("select cid from users where username='" + userid + "'");
+//ResultSet rs= st.executeQuery("select cid from users where username='ohuss' and password='password'");
+if (rs.next())
+	out.println(rs.getString("cid"));
+%><br/>
 <a href='logout.jsp'>Log out</a><br/>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/>
 <a href='makeFlightRes.jsp'>Make Reservation</a><br/>
