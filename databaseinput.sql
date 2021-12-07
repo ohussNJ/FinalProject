@@ -55,7 +55,8 @@ INSERT INTO flight(flightNum, departuredate, destinationdate, departureairport, 
 VALUES (15, "2022-09-26", "2022-09-26", "JFK", "LAX", 1, 0, 600, 2,'201012','211212', "delta1", "NY");
 INSERT INTO flight(flightNum, departuredate, destinationdate, departureairport, destinationairport, isinternational, isdomestic, price, stops, takeoff_time, landing_time, aircraftid, airlineid) 
 VALUES (16, "2022-10-27", "2022-10-27", "LCY", "EWR", 1, 0, 500, 2,'151012','171212', "spirit4", "LO");
-
+INSERT INTO flight(flightNum, departuredate, destinationdate, departureairport, destinationairport, isinternational, isdomestic, price, stops, takeoff_time, landing_time, aircraftid, airlineid) 
+VALUES (17, "2020-10-27", "2020-10-27", "LCY", "EWR", 1, 0, 500, 2,'151012','171212', "spirit4", "LO");
 
 INSERT INTO ticket(cid, flightNum, ticketNum, isflexible, bookingcost, cancelfee, seatnum, fare, datebought, priorityNum, is_oneway, waitlist, is_roundtrip, classtype, is_cancelled)
-VALUES (1, 1, 1, 1, 30, 25, 45, 300, "2022-07-24", 1, 0, 0, 1, "business", 0);
+VALUES (1, 17, 19, 1, 30, 25, 45, 300, "2022-12-07", 1, 0, 0, 1, "business", 0);
