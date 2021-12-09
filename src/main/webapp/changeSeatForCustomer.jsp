@@ -7,7 +7,6 @@
 <title>Change the seat class for the customer</title>
 </head>
 <body>
-Work in progress
 
 <br>
 	<form method="post" action="changeSeatClass.jsp">
